@@ -1,0 +1,31 @@
+#plains{
+    position: absolute;
+    background-image: url("https://superautopets.wiki.gg/images/thumb/f/f1/Field.png/731px-Field.png?20230622020019");
+    height: 300px;
+    width: 100%;
+animation: slideright 600s infinite linear;
+}
+.cat{
+    background-image: url("CatGameCat\ \(Custom\).png") ;
+    height: 40px;
+    width: 60px;
+    bottom: 0;
+    position: absolute;
+}
+
+.obby{
+    background-image:url('EvilCat\ \(Custom\).png');
+    height: 40px;
+    width: 60px;
+    bottom: 0;
+    position: absolute;
+
+}
+@keyframes slideright {
+    from{
+        background-position: 79999%;
+    }
+    to{
+        background-position: 0%;
+    }
+}
