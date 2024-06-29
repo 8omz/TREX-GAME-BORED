@@ -10,17 +10,20 @@ document.addEventListener('DOMContentLoaded', function () {
     let score = 0;
     let isJumping = false
     let isGameOver = false
+    let isPaused = false
     function control(e) {
         if (e.code === "Space") {
             if (!isJumping) {
                 jump()
-
             }
+        }
+        if (e.code === "KeyP") {
+            togglePause()
         }
     }
     function updateScore(){
-            score += 10
-            scores.innerText = score
+        score += 10
+        scores.innerText = score
     }
     console.log(score)
     document.addEventListener('keydown', control)
@@ -29,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
         isJumping = true
         let count = 0
         let timerId = setInterval(function () {
-            // move downwards
             if (count === 15) {
                 clearInterval(timerId)
                 let downTimerId = setInterval(function () {
@@ -44,20 +46,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }, 20)
             }
-            // move upwards
             position += 30
             count++
             position = position * gravity
             cat.style.bottom = position + 'px'
         }, 20)
-    updateScore()
+        updateScore()
     }
 
-
-
-    function createobby() {
+    function createObby() {
         if (!isGameOver) {
-
             let rantime = Math.random() * 4001
             let obbypos = 1000
             const obby = document.createElement('div')
@@ -66,28 +64,42 @@ document.addEventListener('DOMContentLoaded', function () {
             obby.style.left = obbypos + 'px'
 
             let timerId = setInterval(function () {
-                if (obbypos > 0 && obbypos < 60 && position < 60) {
-                    clearInterval(timerId)
-                    alert.innerHTML = 'Game over Meow =^_^='
-                    isGameOver = true
-                    bg.style.animation = 'none'
-                    btn.style.display = "block"
-                    //remove the children from the grid
-                    while (grid.firstChild) {
-                        grid.removeChild(grid.lastChild)
+                if (!isPaused) {
+                    if (obbypos > 0 && obbypos < 60 && position < 60) {
+                        clearInterval(timerId)
+                        alert.innerHTML = 'Game over Meow =^_^='
+                        isGameOver = true
+                        bg.style.animation = 'none'
+                        btn.style.display = "block"
+                        while (grid.firstChild) {
+                            grid.removeChild(grid.lastChild)
+                        }
                     }
+                    obbypos -= 10
+                    obby.style.left = obbypos + 'px'
                 }
-
-                obbypos -= 10
-                obby.style.left = obbypos + 'px'
             }, 20)
-            setTimeout(createobby, rantime)
+            setTimeout(createObby, rantime)
         }
     }
-    createobby()
+    createObby()
+
     btn.onclick = restart;
     function restart() {
         window.location.reload();
+    }
+
+    function togglePause() {
+        isPaused = !isPaused
+        if (isPaused) {
+            alert.innerHTML = 'Game Paused'
+            bg.style.animation = 'none'
+
+        } else { 
+            bg.style.animation = ''
+   
+            alert.innerHTML = ''
+        }
     }
 
 })
