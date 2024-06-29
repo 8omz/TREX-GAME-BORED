@@ -93,34 +93,13 @@ document.addEventListener('DOMContentLoaded', function () {
         isPaused = !isPaused
         if (isPaused) {
             alert.innerHTML = 'Game Paused'
-        } else {
+            bg.style.animation = 'none'
+
+        } else { 
+            bg.style.animation = ''
+   
             alert.innerHTML = ''
         }
     }
 
-    function createPowerUp() {
-        if (!isGameOver) {
-            let rantime = Math.random() * 10000 + 5000
-            let powerUpPos = 1000
-            const powerUp = document.createElement('div')
-            grid.appendChild(powerUp)
-            powerUp.classList.add('power-up')
-            powerUp.style.left = powerUpPos + 'px'
-
-            let timerId = setInterval(function () {
-                if (!isPaused) {
-                    if (powerUpPos > 0 && powerUpPos < 60 && position > 60) {
-                        clearInterval(timerId)
-                        grid.removeChild(powerUp)
-                        score += 100
-                        scores.innerText = score
-                    }
-                    powerUpPos -= 10
-                    powerUp.style.left = powerUpPos + 'px'
-                }
-            }, 20)
-            setTimeout(createPowerUp, rantime)
-        }
-    }
-    createPowerUp()
 })
