@@ -12,7 +12,7 @@ Scroller Cat is a lighthearted project created just for fun. The gameplay is str
 
 - **Simple Controls**: Use basic keyboard inputs to control your cat.
 - **Endless Gameplay**: Keep jumping and see how long you can last!
-- **Custom Designs**: All game designs were created by me in Illustrator in about 6 minutes.
+- **Custom Designs**: All* game designs were created by me in Illustrator in about 6 minutes.
 - **Basic Design**: Made with basic HTML, CSS, and JavaScript.
 
 ## Technologies Used
@@ -29,4 +29,5 @@ Scroller Cat is a lighthearted project created just for fun. The gameplay is str
 
 Feel free to explore the code and modify it as you like. Icl it took me like 30 minutes, so dont be suprised by how bland it is!
 
+* all designs except the background and the font
 ---
